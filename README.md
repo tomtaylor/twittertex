@@ -13,7 +13,7 @@ It uses the tweet’s entities to link to the appropriate URLs for mentions, has
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+The `twittertex` package can be installed like so:
 
   1. Add twittertex to your list of dependencies in `mix.exs`:
 
