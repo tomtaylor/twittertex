@@ -1,8 +1,8 @@
 # Twittertex
 
-Twittertex format a Map containing the JSON structure of a Tweet, and render it to HTML for display.
+Twittertex formats a Map containing the JSON structure of a Tweet, and renders it to HTML for display.
 
-It uses the tweet’s entities to link to the appropriate URLs for mentions, hashtags, links and media.
+It uses the tweet’s `entities` property to link to the appropriate URLs for mentions, hashtags, links and media.
 
 ## Example
 
