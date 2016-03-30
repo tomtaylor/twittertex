@@ -81,17 +81,20 @@ defmodule Twittertex do
   end
 
   defp extract_indices(entity) do
-    indices = Map.fetch!(entity, "indices")
-    start = Enum.at(indices, 0)
-    finish = Enum.at(indices, 1)
-    {start, finish}
+    case Map.get(entity, "indices") do
+      nil -> nil
+      indices ->
+        start = Enum.at(indices, 0)
+        finish = Enum.at(indices, 1)
+        {start, finish}
+    end
   end
 
   defp adjust_indices(entities, position, offset) do
     Enum.map(entities, fn({type, entity}) ->
-      entity = case Map.get(entity, "indices") do
+      entity = case extract_indices(entity) do
         nil -> entity
-        [start, finish] ->
+        {start, finish} ->
           if start > position do
             Map.put(entity, "indices", [start + offset, finish + offset])
           else
