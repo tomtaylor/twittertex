@@ -8,13 +8,41 @@ defmodule Twittertex do
   import Phoenix.HTML.Link
 
   @doc """
-  Formats a tweet into HTML.
+  Formats a tweet (classic or extended) into HTML.
 
   Returns a String of HTML.
   """
   @spec format_tweet(%{}) :: String.t
   def format_tweet(tweet) do
+    case tweet["text"] do
+      nil -> format_extended_tweet(tweet)
+      _ -> format_classic_tweet(tweet)
+    end
+  end
+
+  @doc """
+  Formats a classic (non-extended) tweet into HTML.
+
+  Returns a String of HTML.
+  """
+  @spec format_classic_tweet(%{}) :: String.t
+  def format_classic_tweet(tweet) do
     text = tweet["text"]
+    format_tweet(tweet, text)
+  end
+
+  @doc """
+  Formats an extended tweet into HTML.
+
+  Returns a String of HTML.
+  """
+  @spec format_extended_tweet(%{}) :: String.t
+  def format_extended_tweet(tweet) do
+    text = tweet["full_text"]
+    format_tweet(tweet, text)
+  end
+
+  defp format_tweet(tweet, text) do
     typed_entities = type_entities(tweet["entities"])
     format_entities(text, typed_entities) |> format_linebreaks
   end
