@@ -15,15 +15,19 @@ It uses the tweet’s `entities` property to link to the appropriate URLs for me
 
 The `twittertex` package can be installed like so:
 
-  1. Add twittertex to your list of dependencies in `mix.exs`:
+1. Add twittertex to your list of dependencies in `mix.exs`:
 
-        def deps do
-          [{:twittertex, "~> 0.1.0"}]
-        end
+```elixir
+def deps do
+  [{:twittertex, "~> 0.1.0"}]
+end
+```
 
-  2. Ensure twittertex is started before your application:
+2. Ensure twittertex is started before your application:
 
-        def application do
-          [applications: [:twittertex]]
-        end
+```elixir
+def application do
+  [applications: [:twittertex]]
+end
+```
 
