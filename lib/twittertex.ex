@@ -12,7 +12,7 @@ defmodule Twittertex do
 
   Returns a String of HTML.
   """
-  @spec format_tweet(%{}) :: String.t
+  @spec format_tweet(%{}) :: String.t()
   def format_tweet(tweet) do
     case tweet["text"] do
       nil -> format_extended_tweet(tweet)
@@ -25,7 +25,7 @@ defmodule Twittertex do
 
   Returns a String of HTML.
   """
-  @spec format_classic_tweet(%{}) :: String.t
+  @spec format_classic_tweet(%{}) :: String.t()
   def format_classic_tweet(tweet) do
     text = tweet["text"]
     format_tweet(tweet, text)
@@ -36,7 +36,7 @@ defmodule Twittertex do
 
   Returns a String of HTML.
   """
-  @spec format_extended_tweet(%{}) :: String.t
+  @spec format_extended_tweet(%{}) :: String.t()
   def format_extended_tweet(tweet) do
     text = tweet["full_text"]
     format_tweet(tweet, text)
@@ -55,14 +55,15 @@ defmodule Twittertex do
     text
   end
 
-  defp format_entities(text, [{type, entity}|entities]) do
-    {text, position, offset} = case type do
-      "urls" -> format_url_entity(text, entity)
-      "user_mentions" -> format_user_mention(text, entity)
-      "media" -> format_media_entity(text, entity)
-      "hashtags" -> format_hashtag(text, entity)
-      _ -> {text, 0, 0}
-    end
+  defp format_entities(text, [{type, entity} | entities]) do
+    {text, position, offset} =
+      case type do
+        "urls" -> format_url_entity(text, entity)
+        "user_mentions" -> format_user_mention(text, entity)
+        "media" -> format_media_entity(text, entity)
+        "hashtags" -> format_hashtag(text, entity)
+        _ -> {text, 0, 0}
+      end
 
     entities = adjust_indices(entities, position, offset)
     format_entities(text, entities)
@@ -110,7 +111,9 @@ defmodule Twittertex do
 
   defp extract_indices(entity) do
     case Map.get(entity, "indices") do
-      nil -> nil
+      nil ->
+        nil
+
       indices ->
         start = Enum.at(indices, 0)
         finish = Enum.at(indices, 1)
@@ -119,16 +122,19 @@ defmodule Twittertex do
   end
 
   defp adjust_indices(entities, position, offset) do
-    Enum.map(entities, fn({type, entity}) ->
-      entity = case extract_indices(entity) do
-        nil -> entity
-        {start, finish} ->
-          if start > position do
-            Map.put(entity, "indices", [start + offset, finish + offset])
-          else
+    Enum.map(entities, fn {type, entity} ->
+      entity =
+        case extract_indices(entity) do
+          nil ->
             entity
-          end
-      end
+
+          {start, finish} ->
+            if start > position do
+              Map.put(entity, "indices", [start + offset, finish + offset])
+            else
+              entity
+            end
+        end
 
       {type, entity}
     end)
@@ -136,9 +142,9 @@ defmodule Twittertex do
 
   defp type_entities(entities) do
     keys = Map.keys(entities)
-    Enum.flat_map(keys, fn(k) ->
-      Map.fetch!(entities, k) |> Enum.map(fn(e) -> {k, e} end)
+
+    Enum.flat_map(keys, fn k ->
+      Map.fetch!(entities, k) |> Enum.map(fn e -> {k, e} end)
     end)
   end
-
 end
