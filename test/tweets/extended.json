@@ -4,10 +4,7 @@
   "id_str": "743496707711733760",
   "full_text": "@twitter @twitterdev has more details about these changes at https://t.co/ZnXoRQy8mK.  Thanks for making @twitter more expressive! https://t.co/AWmiH870F7",
   "truncated": false,
-  "display_text_range": [
-    9,
-    130
-  ],
+  "display_text_range": [9, 130],
   "entities": {
     "hashtags": [],
     "symbols": [],
@@ -17,30 +14,21 @@
         "name": "Twitter",
         "id": 783214,
         "id_str": "783214",
-        "indices": [
-          0,
-          8
-        ]
+        "indices": [0, 8]
       },
       {
         "screen_name": "TwitterDev",
         "name": "TwitterDev",
         "id": 2244994945,
         "id_str": "2244994945",
-        "indices": [
-          9,
-          20
-        ]
+        "indices": [9, 20]
       },
       {
         "screen_name": "twitter",
         "name": "Twitter",
         "id": 783214,
         "id_str": "783214",
-        "indices": [
-          105,
-          113
-        ]
+        "indices": [105, 113]
       }
     ],
     "urls": [
@@ -48,20 +36,14 @@
         "url": "https://t.co/ZnXoRQy8mK",
         "expanded_url": "https://blog.twitter.com/2016/doing-more-with-140-characters",
         "display_url": "blog.twitter.com/2016/doing-mor…",
-        "indices": [
-          61,
-          84
-        ]
+        "indices": [61, 84]
       }
     ],
     "media": [
       {
         "id": 743495942192566272,
         "id_str": "743495942192566272",
-        "indices": [
-          131,
-          154
-        ],
+        "indices": [131, 154],
         "media_url": "http://pbs.twimg.com/tweet_video_thumb/ClFtnsZVEAAE4oA.jpg",
         "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/ClFtnsZVEAAE4oA.jpg",
         "url": "https://t.co/AWmiH870F7",
@@ -98,10 +80,7 @@
       {
         "id": 743495942192566272,
         "id_str": "743495942192566272",
-        "indices": [
-          131,
-          154
-        ],
+        "indices": [131, 154],
         "media_url": "http://pbs.twimg.com/tweet_video_thumb/ClFtnsZVEAAE4oA.jpg",
         "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/ClFtnsZVEAAE4oA.jpg",
         "url": "https://t.co/AWmiH870F7",
@@ -131,10 +110,7 @@
           }
         },
         "video_info": {
-          "aspect_ratio": [
-            4,
-            3
-          ],
+          "aspect_ratio": [4, 3],
           "variants": [
             {
               "bitrate": 0,
