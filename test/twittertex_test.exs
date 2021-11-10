@@ -4,7 +4,7 @@ defmodule TwittertexTest do
 
   defp tweet_json(name) do
     contents = File.read!(Path.join(["test", "tweets", "#{name}.json"]))
-    Poison.Parser.parse!(contents)
+    Jason.decode!(contents)
   end
 
   test "URLs and hashtags" do

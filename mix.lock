@@ -1,9 +1,10 @@
 %{
-  "earmark": {:hex, :earmark, "1.0.1", "2c2cd903bfdc3de3f189bd9a8d4569a075b88a8981ded9a0d95672f6e2b63141", [:mix], []},
-  "ex_doc": {:hex, :ex_doc, "0.13.1", "658dbfc8cc5b0fac192f0f3254efe66ee6294200804a291549e0aeb052053bba", [:mix], [{:earmark, "~> 1.0", [hex: :earmark, optional: false]}]},
-  "mime": {:hex, :mime, "1.3.0", "5e8d45a39e95c650900d03f897fbf99ae04f60ab1daa4a34c7a20a5151b7a5fe", [:mix], [], "hexpm"},
-  "phoenix_html": {:hex, :phoenix_html, "2.12.0", "1fb3c2e48b4b66d75564d8d63df6d53655469216d6b553e7e14ced2b46f97622", [:mix], [{:plug, "~> 1.5", [hex: :plug, repo: "hexpm", optional: false]}], "hexpm"},
-  "plug": {:hex, :plug, "1.7.0", "cd8c8de89bd9de55eba1c918bf0e7f319737e109b6014875104af025a623e16e", [:mix], [{:mime, "~> 1.0", [hex: :mime, repo: "hexpm", optional: false]}, {:plug_crypto, "~> 1.0", [hex: :plug_crypto, repo: "hexpm", optional: false]}], "hexpm"},
-  "plug_crypto": {:hex, :plug_crypto, "1.0.0", "18e49317d3fa343f24620ed22795ec29d4a5e602d52d1513ccea0b07d8ea7d4d", [:mix], [], "hexpm"},
-  "poison": {:hex, :poison, "2.2.0", "4763b69a8a77bd77d26f477d196428b741261a761257ff1cf92753a0d4d24a63", [:mix], [], "hexpm"},
+  "earmark": {:hex, :earmark, "1.0.1", "2c2cd903bfdc3de3f189bd9a8d4569a075b88a8981ded9a0d95672f6e2b63141", [:mix], [], "hexpm", "db7b13d74a9edc54d3681762154d164d4a661cd27673cca80760344449877664"},
+  "ex_doc": {:hex, :ex_doc, "0.13.1", "658dbfc8cc5b0fac192f0f3254efe66ee6294200804a291549e0aeb052053bba", [:mix], [{:earmark, "~> 1.0", [hex: :earmark, repo: "hexpm", optional: false]}], "hexpm", "7517099a6041dc859b87e15ca9afb9e2462c5963425bfbc5b28b6ef9a1377000"},
+  "jason": {:hex, :jason, "1.2.2", "ba43e3f2709fd1aa1dce90aaabfd039d000469c05c56f0b8e31978e03fa39052", [:mix], [{:decimal, "~> 1.0 or ~> 2.0", [hex: :decimal, repo: "hexpm", optional: true]}], "hexpm", "18a228f5f0058ee183f29f9eae0805c6e59d61c3b006760668d8d18ff0d12179"},
+  "mime": {:hex, :mime, "1.3.0", "5e8d45a39e95c650900d03f897fbf99ae04f60ab1daa4a34c7a20a5151b7a5fe", [:mix], [], "hexpm", "5e839994289d60326aa86020c4fbd9c6938af188ecddab2579f07b66cd665328"},
+  "phoenix_html": {:hex, :phoenix_html, "2.12.0", "1fb3c2e48b4b66d75564d8d63df6d53655469216d6b553e7e14ced2b46f97622", [:mix], [{:plug, "~> 1.5", [hex: :plug, repo: "hexpm", optional: false]}], "hexpm", "8bc079e2092f4447c8c75029b297cfc3256b8aa46dff02a16eaf1ade5eae96f6"},
+  "plug": {:hex, :plug, "1.7.0", "cd8c8de89bd9de55eba1c918bf0e7f319737e109b6014875104af025a623e16e", [:mix], [{:mime, "~> 1.0", [hex: :mime, repo: "hexpm", optional: false]}, {:plug_crypto, "~> 1.0", [hex: :plug_crypto, repo: "hexpm", optional: false]}], "hexpm", "e21e0ea7cbf87ecbc6ab6a9418db78fa1285dc12c8e0586f44dd6dfa842a190b"},
+  "plug_crypto": {:hex, :plug_crypto, "1.0.0", "18e49317d3fa343f24620ed22795ec29d4a5e602d52d1513ccea0b07d8ea7d4d", [:mix], [], "hexpm", "73c1682f0e414cfb5d9b95c8e8cd6ffcfdae699e3b05e1db744e58b7be857759"},
+  "poison": {:hex, :poison, "2.2.0", "4763b69a8a77bd77d26f477d196428b741261a761257ff1cf92753a0d4d24a63", [:mix], [], "hexpm", "519bc209e4433961284174c497c8524c001e285b79bdf80212b47a1f898084cc"},
 }

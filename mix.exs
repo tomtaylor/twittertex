@@ -21,8 +21,8 @@ defmodule Twittertex.Mixfile do
   defp deps do
     [
       {:phoenix_html, "~> 2.5"},
-      {:poison, "~> 2.0", only: :test},
-      {:ex_doc, ">= 0.0.0", only: :dev},
+      {:jason, "~> 1.2", only: :test},
+      {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 
