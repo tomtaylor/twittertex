@@ -20,7 +20,7 @@ defmodule Twittertex.Mixfile do
 
   defp deps do
     [
-      {:phoenix_html, "~> 2.5"},
+      {:phoenix_html, "~> 2.5 or ~> 3.0"},
       {:jason, "~> 1.2", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
