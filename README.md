@@ -13,21 +13,12 @@ It uses the tweet’s `entities` property to link to the appropriate URLs for me
 
 ## Installation
 
-The `twittertex` package can be installed like so:
-
-1. Add twittertex to your list of dependencies in `mix.exs`:
+Add twittertex to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:twittertex, "~> 0.1.0"}]
+  [
+    {:twittertex, "~> 0.3.0"}
+  ]
 end
 ```
-
-2. Ensure twittertex is started before your application:
-
-```elixir
-def application do
-  [applications: [:twittertex]]
-end
-```
-
