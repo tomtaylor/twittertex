@@ -2,15 +2,16 @@ defmodule Twittertex.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :twittertex,
-     version: "0.2.0",
-     elixir: "~> 1.2",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps(),
-     description: description(),
-     package: package()
-   ]
+    [
+      app: :twittertex,
+      version: "0.2.0",
+      elixir: "~> 1.2",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      deps: deps(),
+      description: description(),
+      package: package()
+    ]
   end
 
   def application do
