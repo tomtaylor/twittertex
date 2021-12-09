@@ -7,16 +7,20 @@ defmodule Twittertex do
   import Phoenix.HTML
   import Phoenix.HTML.Link
 
+  @type opt :: {:link_opts, Keyword.t()}
+  @type opts :: [opt()]
+
   @doc """
   Formats a tweet (classic or extended) into HTML.
 
   Returns a String of HTML.
   """
   @spec format_tweet(%{}) :: String.t()
-  def format_tweet(tweet) do
+  @spec format_tweet(%{}, opts()) :: String.t()
+  def format_tweet(tweet, opts \\ []) do
     case tweet["text"] do
-      nil -> format_extended_tweet(tweet)
-      _ -> format_classic_tweet(tweet)
+      nil -> format_extended_tweet(tweet, opts)
+      _ -> format_classic_tweet(tweet, opts)
     end
   end
 
@@ -26,9 +30,10 @@ defmodule Twittertex do
   Returns a String of HTML.
   """
   @spec format_classic_tweet(%{}) :: String.t()
-  def format_classic_tweet(tweet) do
+  @spec format_classic_tweet(%{}, opts()) :: String.t()
+  def format_classic_tweet(tweet, opts \\ []) do
     text = tweet["text"]
-    format_tweet(tweet, text)
+    format_tweet(tweet, text, opts)
   end
 
   @doc """
@@ -36,64 +41,69 @@ defmodule Twittertex do
 
   Returns a String of HTML.
   """
-  @spec format_extended_tweet(%{}) :: String.t()
-  def format_extended_tweet(tweet) do
+  @spec format_extended_tweet(%{}, opts()) :: String.t()
+  def format_extended_tweet(tweet, opts \\ []) do
     text = tweet["full_text"]
-    format_tweet(tweet, text)
+    format_tweet(tweet, text, opts)
   end
 
-  defp format_tweet(tweet, text) do
+  defp format_tweet(tweet, text, opts) do
     typed_entities = type_entities(tweet["entities"])
-    format_entities(text, typed_entities) |> format_linebreaks
+    format_entities(text, typed_entities, opts) |> format_linebreaks()
   end
 
   defp format_linebreaks(text) do
     text |> String.replace("\n", "<br />")
   end
 
-  defp format_entities(text, []) do
+  defp format_entities(text, [], _opts) do
     text
   end
 
-  defp format_entities(text, [{type, entity} | entities]) do
+  defp format_entities(text, [{type, entity} | entities], opts) do
     {text, position, offset} =
       case type do
-        "urls" -> format_url_entity(text, entity)
-        "user_mentions" -> format_user_mention(text, entity)
-        "media" -> format_media_entity(text, entity)
-        "hashtags" -> format_hashtag(text, entity)
+        "urls" -> format_url_entity(text, entity, opts)
+        "user_mentions" -> format_user_mention(text, entity, opts)
+        "media" -> format_media_entity(text, entity, opts)
+        "hashtags" -> format_hashtag(text, entity, opts)
         _ -> {text, 0, 0}
       end
 
     entities = adjust_indices(entities, position, offset)
-    format_entities(text, entities)
+    format_entities(text, entities, opts)
   end
 
-  defp format_user_mention(text, entity) do
+  defp format_user_mention(text, entity, opts) do
     {start, finish} = extract_indices(entity)
     username = Map.fetch!(entity, "screen_name")
-    l = link("@#{username}", to: "https://twitter.com/#{username}") |> safe_to_string
+
+    link_opts = build_link_opts(opts, "https://twitter.com/#{username}")
+
+    l = link("@#{username}", link_opts) |> safe_to_string()
     splice(text, start, finish, l)
   end
 
-  defp format_hashtag(text, entity) do
+  defp format_hashtag(text, entity, opts) do
     {start, finish} = extract_indices(entity)
     hashtag = Map.fetch!(entity, "text")
-    l = link("##{hashtag}", to: "https://twitter.com/hashtag/#{hashtag}") |> safe_to_string
+    link_opts = build_link_opts(opts, "https://twitter.com/hashtag/#{hashtag}")
+    l = link("##{hashtag}", link_opts) |> safe_to_string()
     splice(text, start, finish, l)
   end
 
-  defp format_url_entity(text, entity) do
+  defp format_url_entity(text, entity, opts) do
     {start, finish} = extract_indices(entity)
     display_url = Map.fetch!(entity, "display_url")
     expanded_url = Map.fetch!(entity, "expanded_url")
-    l = link(display_url, to: expanded_url) |> safe_to_string
+    link_opts = build_link_opts(opts, expanded_url)
+    l = link(display_url, link_opts) |> safe_to_string()
 
     splice(text, start, finish, l)
   end
 
-  defp format_media_entity(text, entity) do
-    format_url_entity(text, entity)
+  defp format_media_entity(text, entity, opts) do
+    format_url_entity(text, entity, opts)
   end
 
   defp splice(text, start, finish, new_text) do
@@ -146,5 +156,11 @@ defmodule Twittertex do
     Enum.flat_map(keys, fn k ->
       Map.fetch!(entities, k) |> Enum.map(fn e -> {k, e} end)
     end)
+  end
+
+  defp build_link_opts(opts, to) do
+    opts
+    |> Keyword.get(:link_opts, [])
+    |> Keyword.put(:to, to)
   end
 end
