@@ -10,7 +10,8 @@ defmodule Twittertex.Mixfile do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: description(),
-      package: package()
+      package: package(),
+      dialyzer: dialyzer()
     ]
   end
 
@@ -39,6 +40,13 @@ defmodule Twittertex.Mixfile do
       maintainers: ["Tom Taylor <tom@tomtaylor.co.uk>"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/tomtaylor/twittertex"}
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
     ]
   end
 end
