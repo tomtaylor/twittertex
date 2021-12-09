@@ -22,6 +22,7 @@ defmodule Twittertex.Mixfile do
     [
       {:phoenix_html, "~> 2.5 or ~> 3.0"},
       {:jason, "~> 1.2", only: :test},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
