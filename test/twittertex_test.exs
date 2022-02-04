@@ -42,4 +42,11 @@ defmodule TwittertexTest do
     assert Twittertex.format_tweet(json, opts) ==
              "Along with our new <a class=\"foo\" href=\"https://twitter.com/hashtag/Twitterbird\" target=\"_blank\">#Twitterbird</a>, we've also updated our Display Guidelines: <a class=\"foo\" href=\"https://dev.twitter.com/terms/display-guidelines\" target=\"_blank\">dev.twitter.com/terms/display-…</a>  ^JC"
   end
+
+  test "URLs, mentions and hashtags from v2 API" do
+    json = tweet_json("v2_mentions_hashtags_urls")
+
+    assert Twittertex.format_tweet(json) ==
+             "Students &amp; Researchers 🚨 Join us on January 28th for our livestream on <a href=\"http://twitch.tv/twitterdev\">twitch.tv/twitterdev</a><br /><br />@suhemparack will be hosting Emily Chen, PhD candidate at University of Southern California to discuss best practices on building datasets for research using the <a href=\"https://twitter.com/hashtag/TwitterAPI\">#TwitterAPI</a> v2 <a href=\"https://twitter.com/TwitterDev/status/1480608486144708611/photo/1\">pic.twitter.com/1PcRy2jz2d</a>"
+  end
 end

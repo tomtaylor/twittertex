@@ -86,7 +86,7 @@ defmodule Twittertex do
 
   defp format_hashtag(text, entity, opts) do
     {start, finish} = extract_indices(entity)
-    hashtag = Map.fetch!(entity, "text")
+    hashtag = extract_hashtag(entity)
     link_opts = build_link_opts(opts, "https://twitter.com/hashtag/#{hashtag}")
     l = link("##{hashtag}", link_opts) |> safe_to_string()
     splice(text, start, finish, l)
@@ -119,17 +119,13 @@ defmodule Twittertex do
     {text, start, offset}
   end
 
-  defp extract_indices(entity) do
-    case Map.get(entity, "indices") do
-      nil ->
-        nil
+  defp extract_indices(%{"indices" => [start, finish]}), do: {start, finish}
+  defp extract_indices(%{"start" => start, "end" => finish}), do: {start, finish}
+  defp extract_indices(_entity), do: nil
 
-      indices ->
-        start = Enum.at(indices, 0)
-        finish = Enum.at(indices, 1)
-        {start, finish}
-    end
-  end
+  defp extract_hashtag(%{"text" => text}), do: text
+  defp extract_hashtag(%{"tag" => tag}), do: tag
+  defp extract_hashtag(_entity), do: throw(ArgumentError)
 
   defp adjust_indices(entities, position, offset) do
     Enum.map(entities, fn {type, entity} ->

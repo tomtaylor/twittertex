@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "mentions": [
+      {
+        "start": 100,
+        "end": 112,
+        "username": "suhemparack",
+        "id": "857699969263964161"
+      }
+    ],
+    "hashtags": [{ "start": 262, "end": 273, "tag": "TwitterAPI" }],
+    "annotations": [
+      {
+        "start": 126,
+        "end": 135,
+        "probability": 0.9857,
+        "type": "Person",
+        "normalized_text": "Emily Chen"
+      },
+      {
+        "start": 155,
+        "end": 187,
+        "probability": 0.4284,
+        "type": "Organization",
+        "normalized_text": "University of Southern California"
+      }
+    ],
+    "urls": [
+      {
+        "start": 75,
+        "end": 98,
+        "url": "https://t.co/GrtBOXh5Y1",
+        "expanded_url": "http://twitch.tv/twitterdev",
+        "display_url": "twitch.tv/twitterdev",
+        "images": [
+          {
+            "url": "https://pbs.twimg.com/news_img/1486747479450300419/QTX2EaFP?format=png&name=orig",
+            "width": 300,
+            "height": 300
+          },
+          {
+            "url": "https://pbs.twimg.com/news_img/1486747479450300419/QTX2EaFP?format=png&name=150x150",
+            "width": 150,
+            "height": 150
+          }
+        ],
+        "status": 200,
+        "title": "TwitterDev - Twitch",
+        "description": "Brought to you by Twitter's Developer Relations team",
+        "unwound_url": "https://www.twitch.tv/twitterdev"
+      },
+      {
+        "start": 277,
+        "end": 300,
+        "url": "https://t.co/1PcRy2jz2d",
+        "expanded_url": "https://twitter.com/TwitterDev/status/1480608486144708611/photo/1",
+        "display_url": "pic.twitter.com/1PcRy2jz2d"
+      }
+    ]
+  },
+  "text": "Students &amp; Researchers \uD83D\uDEA8 Join us on January 28th for our livestream on https://t.co/GrtBOXh5Y1\n\n@suhemparack will be hosting Emily Chen, PhD candidate at University of Southern California to discuss best practices on building datasets for research using the #TwitterAPI v2 https://t.co/1PcRy2jz2d",
+  "id": "1480608486144708611"
+}
