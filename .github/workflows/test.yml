@@ -12,7 +12,7 @@ jobs:
             check_formatted: true
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - uses: erlef/setup-beam@v1
         id: setup-beam
@@ -21,7 +21,7 @@ jobs:
           elixir-version: ${{ matrix.elixir }}
 
       - name: Retrieve Mix Dependencies Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         id: mix-cache
         with:
           path: deps
@@ -42,7 +42,7 @@ jobs:
         run: mix test
 
       - name: Retrieve PLT Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         id: plt-cache
         with:
           path: priv/plts
