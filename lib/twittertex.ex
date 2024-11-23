@@ -5,7 +5,7 @@ defmodule Twittertex do
   """
 
   import Phoenix.HTML
-  import Phoenix.HTML.Link
+  import PhoenixHTMLHelpers.Link
 
   @type opt :: {:link_opts, Keyword.t()}
   @type opts :: [opt()]
