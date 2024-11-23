@@ -1,13 +1,13 @@
 defmodule Twittertex.Mixfile do
   use Mix.Project
 
-  @version "0.4.0"
+  @version "0.5.0"
 
   def project do
     [
       app: :twittertex,
       version: @version,
-      elixir: "~> 1.9",
+      elixir: "~> 1.16",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
